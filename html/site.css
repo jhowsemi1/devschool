@@ -8,7 +8,9 @@ body {
 .container{
     display: flex;
     flex-direction: column;
+
     background-color: #F5F5F5;
+    height: 100vh;
   
 }
 
@@ -17,40 +19,86 @@ body {
     display: flex;
     flex-direction: row;
     height: 100vh;
+      
   
 }
 
+.icones img{
+    width: 2.7em;
+    
+}
+
+.icones{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 5em;
+    margin-right: 1em
+
+}
+
+
+
 .ladoesq{
     width: 18em;
-    height: 41.1em;
+    height: 100vh;
+    position: sticky;
+
     background-color: #2B3031;
     padding-top: 2em;
 }
 
 .ladodir {
-    margin-left: 3em;
-    background-color: #F5F5F5;
-    padding-top: 1.5em;
     
+    background-color: #F5F5F5;   
+}
+
+.seguran {
+    margin-left: 3em;
+}
+.bola{
+    background-color: #986CDF;
+    border-radius: 50%;
+    width: 45px;
+    height: 46px
 }
 
 .cabecalho{
     display: flex;
     flex-direction: row;
+    width: 64em;
+    height: 3.5em;
+    background-color: white;
+    justify-content: space-between;
+   
+}
+.mae-cab{
+    display: flex;
+    flex-direction: row;
+}
+
+.cab img{
+  width: 3em;
 }
 
 .aluno-novo{
     display: flex;
     flex-direction: column;
-    padding-top: 2em;
+
+    padding-top: 1em;
+    margin-top: 2em;
+
     background-color: white;
-    width: 60em;
-    height: 15em;
+    width: 55em;
+
+    padding-left: 3.5em;
+    height: 13em;
 }
 
 .geren-1{
     display: flex;
     flex-direction: row;
+
     justify-content: space-evenly;
     padding-top: 2em;
 }
@@ -85,9 +133,8 @@ body {
     padding-top: 1em;
     display: flex;
     flex-direction: row;
-    
-
 }
+
 
 .botao{
     padding-top: 0.2em;
@@ -111,5 +158,20 @@ input {
 }
 
 .Matriculados {
-    
+    margin-top: 3em;
+    padding-left: 2em;
+    width: 55em;
+    height: 50vh;
+    background-color: white;
 }
+
+.al{
+    display: flex;
+    flex-direction: row;
+}
+
+.barrin {
+    margin-top: 1.3em;
+    margin-right: 1em;
+}
+

@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="site.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+      </style>
 </head>
+
 <body>
       <div class="container"> 
 
@@ -14,29 +18,36 @@
           <div class="ladoesq"> 
               <div class="titu">
                  <div> <img src=".././react/site/public/assests/imagem/book.svg" alt=""/></div>
-                 <div class="titulo"> DevSvhool </div>
+                 <div class="titulo">  <span>Dev</span>School </div>
                 </div>
                 <div class="back">  </div>
-                <div class="geren-1"> 
-                  <div class="geren"> gerenciamento </div>
-                  <div> <img src="../react/site/public/assests/imagem/geren.svg" alt=""> </div> 
-                 </div>
+                 <div class="geren-1"> 
+                    <div class="geren"> Gerenciamento </div>
+                    <div> <img src="../react/site/public/assests/imagem/geren.svg" alt=""> </div> 
+                  </div>
+                 <div class="geren-alu"> Alunos </div>
              </div>
            <div class="ladodir"> 
             <div class="cabecalho">
-            <div class="mae-cab"> 
-               <div class="cab"> <img src="../react/site/public/assests/imagem/usuario.svg" alt=""></div>
-                <div class="part"> Olá jhowsemir </div>
-            </div>
+             <div class="mae-cab"> 
+               <div class="cab"> 
+                   <img src="../react/site/public/assests/imagem/usuario.svg" alt=""/>
+                   <img src="../react/site/public/assests/imagem/bolinha.svg" alt=""/> 
+                </div>
+                <div class="part"> Olá, Bruno de Oliveira </div>
+              </div>
                 <div class="icones"> 
-                    <div class="bola"> <img src="../react/site/public/assests/imagem/recarregar.svg" alt=""/> </div>
-                    <div class="bola"> <img src="../react/site/public/assests/imagem/sair.svg" alt=""/> </div>
+                    <div class="bola"> <button>  <img src="../react/site/public/assests/imagem/recarregar.svg" alt=""/> </button>  </div>
+                    <div class="bola"> <button>  <img src="../react/site/public/assests/imagem/sair.svg" alt=""/> </button> </div>
 
                  </div>
               </div>
                <div class="seguran"> 
                    <div class="aluno-novo"> 
+                       <div class="segu-barra"> 
+                            <div class="barra-alu"> <img src="../react/site/public/assests/imagem/barra.svg" alt=""> </div>
                             <h2> Novo Aluno</h2>
+                          </div>
                      <div class="segu-1"> 
                             <div class="forms">
                                 <div class="nome" > Nome: </div>
@@ -59,26 +70,29 @@
                             <div class="turma" > Turma: </div>
                             <input type="text">
                         </div>
-                   <div class="botao">   
+                   <div class="botao-alu">   
                      <button> Cadastrar </button> 
                     </div>
                 </div>
                 </div>
                 
-                <div class="Matriculados"> 
+                <div class="matriculados"> 
                 <div class="al"> 
                     <div class="barrin"> <img src="../react/site/public/assests/imagem/barra.svg" alt=""> </div>
                     <h2> Alunos Matriculados </h2>
                  </div>
-                <div class="tabela"> 
-                 <table> 
+                 
+                 <table class="tabela"> 
                     <thead> 
                         <tr class="linha-primeira">
                             <th> ID </th>
                             <th> Nome </th>  
                             <th> Chamada </th>  
                             <th> Turma </th> 
-                            <th> Curso </th>      
+                            <th> Curso </th>
+                            <th> </th>      
+                            <th> </th>
+                            
                         </tr>
                     </thead>
                     
@@ -90,23 +104,25 @@
                             <td> InfoA </td>
                             <td> informatica </td>
                                 <td class="botoes"> 
-                                        <img src="editar"/> 
-                                    <img src="excluir"/>
+
+                                    <button> <img src="../react/site/public/assests/imagem/editar.svg" alt=""/> </button> 
+                                    <button> <img src="../react/site/public/assests/imagem/excluir.svg" alt=""/> </button> 
                                 </td>
                             </tr>
                         </tbody>
                         <tbody>  
-                            <tr class="linha2-part"> 
+                            <tr class="linha1-part"> 
                                 <td class="linhas"> 2 </td>
                                 <td> Giovanna </td>
                                 <td> 6 </td>
                                 <td> InfoC </td>
                                 <td> informatica </td>
+
                             </tr>
                           </tbody>
 
                             <tbody> 
-                                  <tr class="linha3-part"> 
+                                  <tr class="linha1-part"> 
                                       <td class="linhas"> 3 </td>
                                       <td> Eduardo </td>
                                       <td> 4 </td>
@@ -116,7 +132,7 @@
                              </tbody>
 
                             <tbody> 
-                            <tr class="linha4-part">
+                            <tr class="linha1-part">
                                 <td class="linhas"> 4 </td> 
                                 <td> Helo</td>
                                 <td> 21 </td>

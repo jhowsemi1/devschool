@@ -5,6 +5,9 @@ import React, { useRef } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 
 
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,6 +17,7 @@ import Api from "../../service/api";
 const api = new Api(); 
 
 export default function Home() {
+
     const loading = useRef(null);
     const [aluno, setAlunos] = useState([]);
     const [nome, setNome] = useState("");
@@ -25,21 +29,53 @@ export default function Home() {
     async function listar() {
         let r = await api.listar();
         setAlunos(r);
+        listar();
     }
 
     async function inserir() {
+        loading.current.continuousStart();
 
-        if( idAlterando == 0) {
+        if(idAlterando === 0) {
+
+            if(!nome || nome.replace === "")
+            return toast.error("o campo aluno deve ser preenchido");
+            loading.current.complete();
+
+            if(nome.length < 4)
+            return toast.error("o campo nome deve conter mais de 4 caracteres")
+            loading.current.complete();
+
+             if(!chamada || chamada.replace === "")
+             return toast.error("o campo chamada é obrigatorio");
+             loading.current.complete();
+
+            if(chamada <= 0)
+            return toast.error("o numero de chamada deve ser positivo e maior que 0")
+            loading.current.complete();
+            
+            if(chamada === NaN)
+            return toast.error("o campo chamada aceita apenas numeros")
+
+            if(curso.length < 4)
+            return toast.error("o campo nome deve conter mais de 4 caracteres")
+            loading.current.complete();
+
+            if(turma.length < 4)
+            return toast.error("o campo nome deve conter mais de 4 caracteres")
+            
+        }
+
+        if( idAlterando === 0) {
             let r = await api.inserir(aluno, chamada, curso, turma);
             if (r.erro) 
-              toast.dark(r.erro);
+            toast.error(`${r.erro}`); 
             
             else 
               toast.dark(" ✅aluno inserido!");
         } else { 
         let r = await api.alterar(idAlterando, aluno, chamada, curso, turma);
         if (r.erro) 
-              alert.dark(r.erro);
+         toast.error(`${r.erro}`); 
         else 
           toast.dark("✳️ aluno alterado!");
 
@@ -48,7 +84,7 @@ export default function Home() {
         listar();
     }
 
-    function limparCampos(){
+    function limparCampos() {
         setNome("");
         setChamada("");
         setCurso("");
@@ -58,10 +94,28 @@ export default function Home() {
     }
 
     async function remover(id) {
-        let r = await api.remover(id);
-        toast.dark("❌ aluno removido");
-
-        listar();
+        loading.current.continuousStart();
+        confirmAlert({
+          title: "remover aluno",
+          message: `tem certeza que deseja remover aluno ${id}`,
+          button: [
+              {
+                  label: "sim",
+                  onclick: async() => {
+                      let r = await api.remover(id);
+                      if(r.erro)
+                         toast.error(`${r.erro}`);
+                        else {
+                            toast.success("aluno removido");
+                            listar();
+                        }
+                  }
+              },
+              {
+                  label:"nao"
+              }
+          ]
+        })  
     }
 
     async function alterar (item) {
@@ -88,11 +142,11 @@ export default function Home() {
                    <div className="aluno-novo"> 
                        <div className="segu-barra"> 
                             <div className="barra-alu"> <img src="/assests/imagem/barra.svg" alt=""/> </div>
-                            <h2> {idAlterando == 0 ? "Novo Aluno" :"Alterando Aluno " + idAlterando} </h2>
+                            <h2> {idAlterando === 0 ? "Novo Aluno" :"Alterando Aluno " + idAlterando} </h2>
                           </div>
                      <div className="segu-1"> 
                             <div className="forms">
-                                <div className="nome" > Nome: </div>
+                                <div className="nome"> Nome: </div>
                                 <input type="text" value={nome} onChange={e => setNome(e.target.value)}/> 
                             </div>
 
@@ -113,7 +167,7 @@ export default function Home() {
                             <input type="text" value={turma} onChange={e => setTurma(e.target.value)}/>
                         </div>
                    <div className="botao-alu">   
-                     <button onClick={inserir}> {idAlterando == 0 ? "Cadastrar" : "alterar"} </button> 
+                     <button onClick={inserir}> {idAlterando === 0 ? "Cadastrar" : "alterar"} </button> 
                     </div>
                   </div>
                   </div>
@@ -141,7 +195,7 @@ export default function Home() {
                         
                         {aluno.map((item, i) => 
                             
-                            <tr className={ i % 2 == 0 ? "alterna" : ""}> 
+                            <tr className={ i % 2 === 0 ? "alterna" : ""}> 
                                 <td> {item.id_matricula} </td>
                                 <td title={item.nm_aluno}> {item.nm_aluno != null && item.nm_aluno.length >= 25 
                                     ? item.nm_aluno.substr(0, 25) + "..." 

@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.get("/matricula", async (req, resp) => {
   try { 
-        let matri = await db.tb_matricula.findAll();
+        let matri = await db.tb_matricula.findAll({order: [[ "id_matricula", "desc"]]});
         resp.send(matri);
   } catch (e) {
       resp.send({ erro: "ocorreu um erro!"})
@@ -20,17 +20,18 @@ app.get("/matricula", async (req, resp) => {
 app.put("/matricula/:id", async (req, resp) => {
    try {
        let id = req.params.id;
-       let aluno = req.body.aluno;
-       let curso = req.body.curso;
-       let turma = req.body.turma;
-       let chamada = req.body.chamada;
+       let b = req.body;
+    //    let aluno = req.body.aluno;
+    //    let curso = req.body.curso;
+    //    let turma = req.body.turma;
+    //    let chamada = req.body.chamada;
 
     let r = await db.tb_matricula.update (
         {
-            nm_aluno: aluno,
-            nm_curso: curso,
-            nm_turma: turma,
-            nr_chamada: chamada
+            nm_aluno: b.aluno,
+            nm_curso: b.curso,
+            nm_turma: b.turma,
+            nr_chamada: b.chamada
 
         },
         {
@@ -46,22 +47,23 @@ app.put("/matricula/:id", async (req, resp) => {
 app.post("/matricula/", async (req, resp) => {
     try {
         let id = req.params.id;
-        let aluno = req.body.aluno;
-        let curso = req.body.curso;
-        let turma = req.body.turma;
-        let chamada = req.body.chamada;
+        let g = req.body;
+        // let aluno = req.body.aluno;
+        // let curso = req.body.curso;
+        // let turma = req.body.turma;
+        // let chamada = req.body.chamada;
  
      let r = await db.tb_matricula.create (
          {
-             nm_aluno: aluno,
-             nm_curso: curso,
-             nm_turma: turma,
-             nr_chamada: chamada
+             nm_aluno: g.aluno,
+             nm_curso: g.curso,
+             nm_turma: g.turma,
+             nr_chamada: g.chamada
          },
          {
              where: {id_matricula: id}
          });
-         resp.sendStatus(200);
+         resp.send(r);
      } catch (e) {
          resp.send({erro: e.toString()});
      }
@@ -69,6 +71,8 @@ app.post("/matricula/", async (req, resp) => {
  })
  app.delete("/matricula/:id", async (req, resp) => {
     try {
+        let {id} = req.params;
+
        let r = await db.tb_matricula.destroy (
            {where: {id_matricula: req.params.id}}
        )

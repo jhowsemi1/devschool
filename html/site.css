@@ -49,6 +49,8 @@ body {
 }
 
 
+
+
 .ladoesq{
     width: 18em;
     height: 100vh;
@@ -283,6 +285,7 @@ th,td {
 .botoes button{
    background-color: #565656;
     border-radius: 50%;
+    
     border: none;
     height: 46px;
 }

@@ -103,7 +103,6 @@ input {
 
         max-height: 300px;
        
-
    
 }
 
@@ -171,8 +170,6 @@ th,td {
 .visu > button {
   visibility: hidden;
 }
-
-
 
 
 

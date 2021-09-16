@@ -9,8 +9,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+    
 import { useState, useEffect } from "react";
 import Api from "../../service/api";
 
@@ -55,7 +54,8 @@ export default function Home() {
             
             if(chamada === NaN)
             return toast.error("o campo chamada aceita apenas numeros")
-
+            loading.current.complete();
+            
             if(curso.length < 4)
             return toast.error("o campo nome deve conter mais de 4 caracteres")
             loading.current.complete();

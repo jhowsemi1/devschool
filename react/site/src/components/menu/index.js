@@ -14,6 +14,7 @@ export default function menu() {
                     <div> <img src="/assests/imagem/geren.svg" alt=""/> </div> 
                   </div>
                  <div className="geren-alu"> Alunos </div>
+                 
              </div>
 
         </Menu>

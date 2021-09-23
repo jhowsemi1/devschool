@@ -25,10 +25,10 @@ export default function Home() {
     const [curso, setCurso] = useState("");
     const [idAlterando, setIdAlterando] = useState(0);
     
-    async function listar() {
-        let r = await api.listar();
+    async function listarr() {
+        let r = await api.listarr();
         setAlunos(r);
-        listar();
+        
     }
 
     async function inserir() {
@@ -81,7 +81,7 @@ export default function Home() {
 
       }  
        limparCampos();
-        listar();
+        listarr();
     }
 
     function limparCampos() {
@@ -107,7 +107,7 @@ export default function Home() {
                          toast.error(`${r.erro}`);
                         else {
                             toast.success("aluno removido");
-                            listar();
+                            listarr();
                         }
                   }
               },
@@ -128,7 +128,7 @@ export default function Home() {
     }
 
   useEffect(() => {
-      listar();
+      listarr();
   },[])
 
   return (

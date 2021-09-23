@@ -52,7 +52,7 @@ export default function Home() {
             return toast.error("o numero de chamada deve ser positivo e maior que 0")
             loading.current.complete();
             
-            if(chamada === NaN)
+            if(chamada === isNaN )
             return toast.error("o campo chamada aceita apenas numeros")
             loading.current.complete();
             
